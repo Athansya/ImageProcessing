@@ -48,6 +48,15 @@ bins = np.zeros(256)
 for row in range(npimageG.shape[0]):
     for col in range(npimageG.shape[1]):
         value = npimageG[row, col]
-        bins[int(value)] += value
+        bins[int(value)] += 1 #Counts instances of the same intensity value
         
 plt.fill_between(range(256),bins, 0, facecolor="blue")
+
+# Then, we can compare it with the plt.hist() function
+plt.hist(npimageG.ravel(), 256, [0, 256])
+
+# Alternatively, we can use a shorter method to count instances of the same intensity value
+bins_2 = np.bincount(npimageG.ravel().astype(int))
+# In order to check the first implementation, we can throw in an assertion
+assert np.array_equal(bins,bins_2)
+
