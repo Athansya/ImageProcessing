@@ -39,7 +39,15 @@ plt.imshow(npimageG, cmap='gray')
 plt.axis('off')
 
 # Check max and min value
-print(npimage.shape)
+print(npimageG.shape)
 print('The maximum intensity value is:{}'.format(np.max(npimage)))
 print('The minimum intensity value is:{}'.format(np.min(npimage)))
 
+# Plot histogram
+bins = np.zeros(256)
+for row in range(npimageG.shape[0]):
+    for col in range(npimageG.shape[1]):
+        value = npimageG[row, col]
+        bins[int(value)] += value
+        
+plt.fill_between(range(256),bins, 0, facecolor="blue")
