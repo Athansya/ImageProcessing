@@ -7,7 +7,10 @@ Author: Athansya
 Copyright (c) 2021 Your Company
 
 Description:
-Power-law (gamma) transformations have the form: s=cr^gamma. Where c an gamma are positive constants. As with log transformations, power-law curves with fractional values of gamma map a narrow range of dark input values into a wider range of output values, with the opposite being true for higher values of input levels. Curves generated with values of gamma > 1 have the opposite effect as those generated with values of gamma < 1. When c = gamma = 1 reduces to the identity transformation.
+Power-law (gamma) transformations have the form: s=cr^gamma. Where c an gamma are positive constants. As with log transformations, 
+power-law curves with fractional values of gamma map a narrow range of dark input values into a wider range of output values, with the 
+opposite being true for higher values of input levels. Curves generated with values of gamma > 1 have the opposite effect as those 
+generated with values of gamma < 1. When c = gamma = 1 reduces to the identity transformation.
 '''
 # Import packages
 import matplotlib.pyplot as plt
