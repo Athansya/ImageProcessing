@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 # Read and display image
 path = '/home/atoriz98/PythonProjects/ImageProcessing/Scripts/Images/CovidXray.jpeg'
 img = plt.imread(path)
-#plt.imshow(img)
-#plt.axis('off')
+plt.imshow(img)
+plt.axis('off')
 
 # Convert img to np array
 npimage = np.asarray(img) # / 255
