@@ -84,3 +84,8 @@ f.add_subplot(1,2,2)
 plt.hist(npimageG.ravel(), 256, [0, 256], cumulative=True, density=True)
 plt.xticks(np.arange(0, 255, step=50))
 plt.title('Matplotlib')
+
+# In order to check the first implementation, we can throw in an assertion
+CDF_2 = plt.hist(npimageG.ravel(), 256, [0, 256], cumulative=True, density=True);
+
+assert np.array_equal(CDF,CDF_2[0])
