@@ -93,6 +93,50 @@ plt.xticks(np.arange(0, 255, step=50))
 plt.title('Matplotlib')
 
 # In order to check the first implementation, we can throw in an assertion
-#CDF_2 = plt.hist(npimageG.ravel(), 256, [0, 256], #cumulative=True, density=True);
+CDF_2 = plt.hist(npimageG.ravel(), 256, [0, 256], cumulative=True, density=True);
 
-#assert np.array_equal(CDF,CDF_2[0])
+assert np.array_equal(CDF,CDF_2[0])
+
+'''
+Histogram Equalization
+Is a method in image processing of contrast adjustment using the image's histogram. More information and examples on https://en.wikipedia.org/wiki/Histogram_equalization
+'''
+# First, let's declare our formula variables
+CDF_min = np.min(CDF) # CDF Minimun value
+MN = npimageG.shape[0] * npimageG.shape[1] # Total number of pixels
+L = 256 # Number of grey levels used 
+
+# Apply histogram equalization
+hv = np.asarray([((x - CDF_min)/(MN - CDF_min))*(L - 1) for x in CDF])
+
+#Create zeros-array with image dimensions
+npimageHE = np.zeros((npimageG.shape[0], npimageG.shape[1]))
+
+# Compute our new image
+for row in range(npimageG.shape[0]):
+    for col in range(npimageG.shape[1]):
+        value = npimageG[row, col]
+        npimageHE[row, col] = hv[int(value)]
+
+# Normalize new image to [0 255]
+npimageHE = npimageHE / np.max(npimageHE) * 255
+
+# Let's Plot the images along with their respectively CDF
+f = plt.figure(figsize=(15,15))
+f.add_subplot(2,2,1)
+plt.imshow(npimageG, cmap = 'gray')
+plt.title('Original')
+plt.axis('off')
+
+f.add_subplot(2,2,2)
+plt.hist(npimageG.ravel(), 256, [0, 256], cumulative=True, density=True)
+plt.title('CDF')
+
+f.add_subplot(2,2,3)
+plt.imshow(npimageHE, cmap = 'gray')
+plt.title('Histogram Equalization')   
+plt.axis('off')
+
+f.add_subplot(2,2,4)
+plt.hist(npimageHE.ravel(), 256, [0, 256], cumulative=True, density=True)
+plt.title('CDF')
