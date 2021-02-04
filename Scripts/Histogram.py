@@ -49,16 +49,23 @@ for row in range(npimageG.shape[0]):
     for col in range(npimageG.shape[1]):
         value = npimageG[row, col]
         bins[int(value)] += 1 #Counts instances of the same intensity value
-        
-plt.fill_between(range(256),bins, 0, facecolor="blue")
-
-# Then, we can compare it with the plt.hist() function
-plt.hist(npimageG.ravel(), 256, [0, 256])
 
 # Alternatively, we can use a shorter method to count instances of the same intensity value
 bins_2 = np.bincount(npimageG.ravel().astype(int))
 # In order to check the first implementation, we can throw in an assertion
 assert np.array_equal(bins,bins_2)
+
+# Comparsion of my histogram and Matplotlib
+f = plt.figure(figsize=(15,5))
+f.add_subplot(1,2,1)
+plt.fill_between(range(256),bins, 0)
+plt.ylim(bottom=0)
+plt.xticks(np.arange(0, 255, step=50))
+plt.title('Mine')
+f.add_subplot(1,2,2)
+plt.hist(npimageG.ravel(), 256, [0, 256])
+plt.xticks(np.arange(0, 255, step=50))
+plt.title('Matplotlib')
 
 # Note: For future comparison, timeit.timeit would be useful
 

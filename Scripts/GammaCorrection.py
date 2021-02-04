@@ -28,15 +28,17 @@ darker = npimg ** (1/0.5) # Darker image
 brighter = npimg ** (1/1.5) # Brighter image
 
 # Plot all of them. Could be made into a function
-plt.subplot(1,3,1)
+f = plt.figure(figsize=(15,5))
+f.add_subplot(1,3,1)
 plt.imshow(npimg)
 plt.axis('off')
 plt.title('Original')
-plt.subplot(1,3,2)
+f.add_subplot(1,3,2)
 plt.imshow(darker)
 plt.axis('off')
 plt.title('\u03BB: 0.5')
-plt.subplot(1,3,3)
+f.add_subplot(1,3,3)
 plt.imshow(brighter)
 plt.axis('off')
 plt.title('\u03BB: 1.5')
+
