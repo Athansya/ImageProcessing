@@ -60,5 +60,27 @@ bins_2 = np.bincount(npimageG.ravel().astype(int))
 # In order to check the first implementation, we can throw in an assertion
 assert np.array_equal(bins,bins_2)
 
-# Note: For future comparison, timeit.timeit would be useful 
+# Note: For future comparison, timeit.timeit would be useful
 
+'''
+Cumulative distribution function (CDF)
+It is a cumulative sum of all the probabilities lying in its domain and defined by:
+cdf(x) = sum_{k =-\infty}^{x} P(k)
+'''
+
+# First,we need to obtain the Probability Density Function (PDF)
+PDF = bins/np.sum(bins)
+# Then, we compute the cumulative sum to obtain the CDF
+CDF = np.cumsum(PDF)
+
+# Finally, we plot and compare it with matplotlib implementation
+f = plt.figure(figsize=(25,10))
+f.add_subplot(1,2,1)
+plt.fill_between(np.arange(256), 0, CDF)
+plt.ylim(bottom=0)
+plt.xticks(np.arange(0, 255, step=50))
+plt.title('Mine')
+f.add_subplot(1,2,2)
+plt.hist(npimageG.ravel(), 256, [0, 256], cumulative=True, density=True)
+plt.xticks(np.arange(0, 255, step=50))
+plt.title('Matplotlib')
