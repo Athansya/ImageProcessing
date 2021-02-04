@@ -74,7 +74,7 @@ PDF = bins/np.sum(bins)
 CDF = np.cumsum(PDF)
 
 # Finally, we plot and compare it with matplotlib implementation
-f = plt.figure(figsize=(25,10))
+f = plt.figure(figsize=(15,5))
 f.add_subplot(1,2,1)
 plt.fill_between(np.arange(256), 0, CDF)
 plt.ylim(bottom=0)
@@ -86,6 +86,6 @@ plt.xticks(np.arange(0, 255, step=50))
 plt.title('Matplotlib')
 
 # In order to check the first implementation, we can throw in an assertion
-CDF_2 = plt.hist(npimageG.ravel(), 256, [0, 256], cumulative=True, density=True);
+#CDF_2 = plt.hist(npimageG.ravel(), 256, [0, 256], #cumulative=True, density=True);
 
-assert np.array_equal(CDF,CDF_2[0])
+#assert np.array_equal(CDF,CDF_2[0])
