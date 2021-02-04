@@ -60,3 +60,5 @@ bins_2 = np.bincount(npimageG.ravel().astype(int))
 # In order to check the first implementation, we can throw in an assertion
 assert np.array_equal(bins,bins_2)
 
+# Note: For future comparison, timeit.timeit would be useful 
+
