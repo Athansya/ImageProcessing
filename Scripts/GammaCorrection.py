@@ -22,6 +22,8 @@ img = plt.imread(path)
 #plt.imshow(img)
 #plt.axis('off')
 
+# !!!! Should convert RGB to BW
+
 # Apply gamma correction
 npimg = np.asarray(img) / 255 # Must normalize to [0, 1.0] first
 darker = npimg ** (1/0.5) # Darker image
