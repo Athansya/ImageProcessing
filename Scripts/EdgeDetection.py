@@ -7,8 +7,12 @@ Author: Athansya
 Copyright (c) 2021 Your Company
 Description:
 Edge Detection
-It is a common problem in image processing. What we perceive as edges in an image are strong changes between neighboring intensities. Since images can be interpreted as functions, we can find these changes by taking the derivative of an image. The derivative can be calculated by using finite differences, an approximation that is similar to the difference quotient.
-- Maier, A., Steidl, S., Christlein, V. and Hornegger, J., 2018. Medical Imaging Systems. 1st ed. Springer International Publishing, p.38.
+It is a common problem in image processing. What we perceive as edges in an image are strong 
+changes between neighboring intensities. Since images can be interpreted as functions, we can
+find these changes by taking the derivative of an image. The derivative can be calculated by 
+using finite differences, an approximation that is similar to the difference quotient.
+- Maier, A., Steidl, S., Christlein, V. and Hornegger, J., 2018. Medical Imaging Systems. 1st ed. 
+Springer International Publishing, p.38.
 
 For more information: 
 https://mccormickml.com/2013/02/26/image-derivative/
