@@ -37,8 +37,13 @@ plt.axis('off')
 print("Las dimensiones de la imagen son", npimg.shape)
 
 # Declare filters for edge detection(Prewitt)
-f1 = np.array([[1,1,1],[0,0,0],[-1,-1,-1]]) #vertical edges
-f2 = np.array([[1,0,-1],[1,0,-1],[1,0,-1]]) #horizontal edges
+f1 = np.array([[1,1,1],
+               [0,0,0]
+               [-1,-1,-1]]) #vertical edges
+
+f2 = np.array([[1,0,-1],
+               [1,0,-1],
+               [1,0,-1]]) #horizontal edges
 
 # Define convolution functions to perform edge detection
 # Could be better imo
