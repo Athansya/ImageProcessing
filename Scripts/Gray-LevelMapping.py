@@ -37,7 +37,7 @@ plt.axis('off')
 # Brightness manipulation
 # It's important to set intensities over 255 to 255, and below 0 to 0.
 brighter = img.astype(int) + 100 # type must me change because uint8 only goes from 0 to 255 and starts over once it reaches the end. e.g. 255 + 10 = 10
-brighter[brighter > 255] = 255
+brighter[brighter > 255] = 255 # Numpy indexing is faster than looping over and over
 
 darker = img.astype(int) - 100
 darker[darker < 0] = 0
