@@ -55,3 +55,25 @@ fig.add_subplot(1,3,3)
 plt.imshow(darker, cmap='gray')
 plt.axis('off')
 plt.title('Darker')
+
+# Contrast manipulation
+# Same conditions apply here
+h_contrast = np.dot((img.astype(int)-128), 50) + 128
+h_contrast[h_contrast > 255] = 255 
+
+l_contrast = np.dot((img.astype(int)-128), -50) + 128
+l_contrast[l_contrast < 0] = 0
+
+fig = plt.figure(figsize=(15,10))
+fig.add_subplot(1,3,1)
+plt.imshow(img, cmap='gray')
+plt.axis('off')
+plt.title('Original')
+fig.add_subplot(1,3,2)
+plt.imshow(h_contrast, cmap='gray')
+plt.axis('off')
+plt.title('High contrast')
+fig.add_subplot(1,3,3)
+plt.imshow(l_contrast, cmap='gray')
+plt.axis('off')
+plt.title('Low contrast')
