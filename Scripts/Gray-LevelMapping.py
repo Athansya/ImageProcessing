@@ -34,5 +34,24 @@ plt.imshow(img, cmap='gray')
 plt.axis('off')
 # ! DON'T USE cv2.imshow() if you're running WSL and Vscode Interactive Window, kernel dies.
 
+# Brightness manipulation
+# It's important to set intensities over 255 to 255, and below 0 to 0.
+brighter = img.astype(int) + 100 # type must me change because uint8 only goes from 0 to 255 and starts over once it reaches the end. e.g. 255 + 10 = 10
+brighter[brighter > 255] = 255
 
+darker = img.astype(int) - 100
+darker[darker < 0] = 0
 
+fig = plt.figure(figsize=(15,10))
+fig.add_subplot(1,3,1)
+plt.imshow(img, cmap='gray')
+plt.axis('off')
+plt.title('Original')
+fig.add_subplot(1,3,2)
+plt.imshow(brighter, cmap='gray')
+plt.axis('off')
+plt.title('Brighter')
+fig.add_subplot(1,3,3)
+plt.imshow(darker, cmap='gray')
+plt.axis('off')
+plt.title('Darker')
