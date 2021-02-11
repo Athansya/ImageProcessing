@@ -19,8 +19,6 @@ import numpy as np
 # Load image
 path = '/home/atoriz98/PythonProjects/ImageProcessing/Scripts/Images/CovidXray.jpeg'
 img = plt.imread(path)
-#plt.imshow(img)
-#plt.axis('off')
 
 # !!!! Should convert RGB to BW
 
@@ -29,18 +27,25 @@ npimg = np.asarray(img) / 255 # Must normalize to [0, 1.0] first
 darker = npimg ** (1/0.5) # Darker image
 brighter = npimg ** (1/1.5) # Brighter image
 
-# Plot all of them. Could be made into a function
-f = plt.figure(figsize=(15,5))
-f.add_subplot(1,3,1)
-plt.imshow(npimg)
-plt.axis('off')
-plt.title('Original')
-f.add_subplot(1,3,2)
-plt.imshow(darker)
-plt.axis('off')
-plt.title('\u03BB: 0.5')
-f.add_subplot(1,3,3)
-plt.imshow(brighter)
-plt.axis('off')
-plt.title('\u03BB: 1.5')
+# Function to show Images
+def disp_img(images, titles, fig_size, rows, cols):
+    """[summary]
+        Allows to display multiple images along with their title. Doesn't contain axis labels and the default cmap = 'gray'.
+    Args:
+        images ([array]): array containing images to be shown.
+        titles ([array]): array containing titles to be shown.
+        fig_size ([tuple]): tuple describing figure size, as in (15,10).
+        rows ([type]): number of rows of the figure.
+        cols ([type]): number of colums of the figure.
+    """    
+    fig = plt.figure(figsize = fig_size)
+    for position in range(len(images)):
+        fig.add_subplot(rows,cols,position+1)
+        plt.imshow(images[position], cmap='gray')
+        plt.axis('off')
+        plt.title(titles[position])
+
+# Plot all of them
+disp_img([npimg, darker, brighter],['Original','\u03BB: 0.5','\u03BB: 1.5'], (15,5), 1, 3)
+
 

@@ -38,7 +38,7 @@ print("Las dimensiones de la imagen son", npimg.shape)
 
 # Declare filters for edge detection(Prewitt)
 f1 = np.array([[1,1,1],
-               [0,0,0]
+               [0,0,0],
                [-1,-1,-1]]) #vertical edges
 
 f2 = np.array([[1,0,-1],
@@ -104,17 +104,24 @@ def conv2Dpad(img, kernel):
             output[row, col] = np.sum(img[row:row + k_h, col:col + k_w] * kernel)
     return output
 
-# Should find a way to optimize this
-fig = plt.figure(figsize=(15,5))
-fig.add_subplot(1,3,1)
-plt.imshow(npimg, cmap='gray')
-plt.axis('off')
-plt.title('Original')
-fig.add_subplot(1,3,2)
-plt.imshow(conv2Dpad(npimg, f2), cmap='gray')
-plt.axis('off')
-plt.title('Horizontal edges')
-fig.add_subplot(1,3,3)
-plt.imshow(conv2Dpad(npimg, f1), cmap='gray')
-plt.axis('off')
-plt.title('Vertical edges')
+# Function to show Images
+def disp_img(images, titles, fig_size, rows, cols):
+    """[summary]
+        Allows to display multiple images along with their title. Doesn't contain axis labels and the default cmap = 'gray'.
+    Args:
+        images ([array]): array containing images to be shown.
+        titles ([array]): array containing titles to be shown.
+        fig_size ([tuple]): tuple describing figure size, as in (15,10).
+        rows ([type]): number of rows of the figure.
+        cols ([type]): number of colums of the figure.
+    """    
+    fig = plt.figure(figsize = fig_size)
+    for position in range(len(images)):
+        fig.add_subplot(rows,cols,position+1)
+        plt.imshow(images[position], cmap='gray')
+        plt.axis('off')
+        plt.title(titles[position])
+
+disp_img([npimg, conv2Dpad(npimg, f2), conv2Dpad(npimg, f1)], ['Original','Horizontal edges','Vertical edges'],(15,10),1,3)
+
+
