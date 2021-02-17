@@ -21,7 +21,7 @@ import cv2
 img = plt.imread('/home/atoriz98/PythonProjects/ImageProcessing/Scripts/Images/CovidXray.jpeg')
 
 # Convert to numpy array for better manipulation
-img = np.array(img)
+img = np.asarray(img)
 
 # Convert to Grayscale
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
