@@ -9,6 +9,7 @@ pillow = "*"
 matplotlib = "*"
 ipykernel = "*"
 opencv-python = "*"
+scikit-image = "*"
 
 [dev-packages]
 
