@@ -83,7 +83,8 @@ def conv2Dpad(img, kernel):
     
     output = np.zeros((img.shape[0] - k_h + p_h + 1, img.shape[1] - k_w + p_w + 1))
     
-    # Next cycles help find and add the necessary padding
+    # Next cycles help find and add the necessary padding to keep the aspect ratio intact.
+    # More on in can be found here: https://d2l.ai/chapter_convolutional-neural-networks/padding-and-strides.html
     if k_h % 2 != 0:
         img = np.insert(img, 0, np.zeros([int(p_h/2),1]), axis=0)
         img = np.insert(img, img.shape[0], np.zeros([int(p_h/2),1]), axis=0)
